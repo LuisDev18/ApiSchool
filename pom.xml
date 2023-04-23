@@ -58,6 +58,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<plugins>
 			<plugin>
@@ -124,7 +125,11 @@
 				<configuration>
 					<sources>
 						<source>${project.basedir}/src/main/resources/profesor-detalle.xsd</source>
+
 						<source>${project.basedir}/src/main/resources/asistencia-detalle.xsd</source>
+
+						<source>${project.basedir}/src/main/resources/alumno-detalle.xsd</source>
+
 					</sources>
 				</configuration>
 				
