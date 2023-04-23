@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://utp.edu.pe/alumnows"
+           xmlns:tns="http://utp.edu.pe/alumnows"
+           elementFormDefault="qualified">
+
+    <!-- ok -->
+    <!-- Agregar -->
+    <xs:element name="AddAlumnoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="apellidoPaterno" type="xs:string"/>
+                <xs:element name="apellidoMaterno" type="xs:string"/>
+                <xs:element name="dni" type="xs:string"/>
+                <xs:element name="celular" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="genero" type="xs:string"/>
+                <!-- <xs:element name="fechaNac" type="xs:date"/> -->
+                <xs:element name="padreApoderado" type="xs:string"/>
+                <xs:element name="direccion" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddAlumnoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+                <xs:element name="AlumnoDetalle" type="tns:AlumnoDetalle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ok -->
+    <!-- ListarAlumnosByCurso // ListarAlumnos-->
+    <xs:element name="GetAllAlumnoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="texto" type="xs:string"/>
+                <xs:element name="offset" type="xs:int"/>
+                <xs:element name="limit" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetAllAlumnoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AlumnoDetalle" type="tns:AlumnoDetalle" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ok -->
+    <!-- BuscarAlumnoByID -->
+    <xs:element name="GetAlumnoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetAlumnoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AlumnoDetalle" type="tns:AlumnoDetalle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ok -->
+    <!-- Actualizar -->
+    <xs:element name="UpdateAlumnoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AlumnoDetalle" type="tns:AlumnoDetalle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateAlumnoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+                <xs:element name="AlumnoDetalle" type="tns:AlumnoDetalle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ok -->
+    <!-- Delete-->
+    <xs:element name="DeleteAlumnoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteAlumnoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ok -->
+    <!-- AlumnoDetalle -->
+    <xs:complexType name="AlumnoDetalle">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="apellidoPaterno" type="xs:string"/>
+            <xs:element name="apellidoMaterno" type="xs:string"/>
+            <xs:element name="dni" type="xs:string"/>
+            <xs:element name="celular" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="genero" type="xs:string"/>
+            <!--<xs:element name="fechaNac" type="xs:date"/>-->
+            <xs:element name="padreApoderado" type="xs:string"/>
+            <xs:element name="direccion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- RequestDTODetalleAlumnoUpdate
+    <xs:complexType name="AlumnoDetalleUpdate">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="celular" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="curso" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType> -->
+
+    <!-- ok -->
+    <xs:complexType name="ServiceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
