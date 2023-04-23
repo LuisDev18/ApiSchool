@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
@@ -23,7 +24,8 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
-
+    
+    //@Primary
     @Bean
     public XsdSchema articulosSchema() {
         return new SimpleXsdSchema(new ClassPathResource("profesor-detalle.xsd"));
@@ -39,6 +41,20 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
+    @Bean
+    public XsdSchema asistenciaSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("asistencia-detalle.xsd"));
+    }
+    //ws/asistencia.wsdl
+    
+    @Bean(name = "asistencia")
+    public DefaultWsdl11Definition defaultWsdl11Definition3(XsdSchema asistenciaSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("AsistenciaPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolasistenciaws");
+
+
 
     @Bean
     public XsdSchema alumnosSchema() {
@@ -52,6 +68,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://utp.edu.pe/alumnows");
         wsdl11Definition.setSchema(alumnosSchema);
+
         return wsdl11Definition;
     }
 }

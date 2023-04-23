@@ -78,6 +78,42 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>
 				<version>3.1.0</version>
+	<!--			
+    <executions>
+        <execution>
+            <id>xjc-schema</id>
+            <goals>
+                <goal>xjc</goal>
+            </goals>
+            <configuration>
+                
+                <sources>
+                    <source>${project.basedir}/src/main/resources/profesor-detalle.xsd</source>
+                </sources>
+
+                
+                <packageName>pe.edu.utp.schoolws</packageName>
+            </configuration>
+        </execution>
+        <execution>
+            <id>xjc-schema_3</id>
+            <goals>
+                <goal>xjc</goal>
+            </goals>
+            <configuration>
+               
+                <sources>
+                    <source>${project.basedir}/src/main/resources/asistencia-detalle.xsd</source>
+                </sources>
+                
+                <packageName>pe.edu.utp.schoolws.asistencia</packageName>
+
+                <clearOutputDir>false</clearOutputDir>
+            </configuration>
+        </execution>
+    </executions>
+    		-->		
+				
 				<executions>
 					<execution>
 						<id>xjc</id>
@@ -89,9 +125,14 @@
 				<configuration>
 					<sources>
 						<source>${project.basedir}/src/main/resources/profesor-detalle.xsd</source>
+
+						<source>${project.basedir}/src/main/resources/asistencia-detalle.xsd</source>
+
 						<source>${project.basedir}/src/main/resources/alumno-detalle.xsd</source>
+
 					</sources>
 				</configuration>
+				
 			</plugin>
 		</plugins>
 	</build>
