@@ -17,16 +17,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import pe.edu.utp.schoolws.asistencia.ServiceStatus;
-import pe.edu.utp.schoolws.asistencia.UpdateAsistenciaRequest;
-import pe.edu.utp.schoolws.asistencia.UpdateAsistenciaResponse;
-import pe.edu.utp.schoolws.asistencia.AddAsistenciaRequest;
-import pe.edu.utp.schoolws.asistencia.AddAsistenciaResponse;
-import pe.edu.utp.schoolws.asistencia.AsistenciaDetalle;
-import pe.edu.utp.schoolws.asistencia.DeleteAsistenciaRequest;
-import pe.edu.utp.schoolws.asistencia.DeleteAsistenciaResponse;
-import pe.edu.utp.schoolws.asistencia.GetAsistenciaEstudianteRequest;
-import pe.edu.utp.schoolws.asistencia.GetAsistenciaEstudianteResponse;
+import pe.edu.utp.schoolasistenciaws.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,7 +34,7 @@ public class AsistenciaEndPoint {
     @Autowired
     AsistenciaService asistenciaService;
 
-    @PayloadRoot(namespace = "http://utp.edu.pe/schoolws", localPart = "GetAsistenciaEstudianteRequest")
+    @PayloadRoot(namespace = "http://utp.edu.pe/schoolasistenciaws", localPart = "GetAsistenciaEstudianteRequest")
     @ResponsePayload
 	public GetAsistenciaEstudianteResponse findByEstudiante (@RequestPayload GetAsistenciaEstudianteRequest request) {
     	GetAsistenciaEstudianteResponse response = new GetAsistenciaEstudianteResponse();
@@ -70,7 +61,7 @@ public class AsistenciaEndPoint {
 		return response;
 	}
     
-    @PayloadRoot(namespace = "http://utp.edu.pe/schoolws", localPart = "DeleteAsistenciaRequest")
+    @PayloadRoot(namespace = "http://utp.edu.pe/schoolasistenciaws", localPart = "DeleteAsistenciaRequest")
 	@ResponsePayload
 	public DeleteAsistenciaResponse create (@RequestPayload DeleteAsistenciaRequest request) {
 		ServiceStatus serviceStatus=new ServiceStatus();
@@ -88,7 +79,7 @@ public class AsistenciaEndPoint {
 		return response;
 	}
     
-    @PayloadRoot(namespace = "http://utp.edu.pe/schoolws", localPart = "AddAsistenciaRequest")
+    @PayloadRoot(namespace = "http://utp.edu.pe/schoolasistenciaws", localPart = "AddAsistenciaRequest")
     @ResponsePayload
     public AddAsistenciaResponse create (@Valid @RequestPayload AddAsistenciaRequest request) throws ParseException {
         ServiceStatus serviceStatus=new ServiceStatus();
@@ -132,7 +123,7 @@ public class AsistenciaEndPoint {
       return response;
     }
     
-    @PayloadRoot(namespace = "http://utp.edu.pe/schoolws", localPart = "UpdateAsistenciaRequest")
+    @PayloadRoot(namespace = "http://utp.edu.pe/schoolasistenciaws", localPart = "UpdateAsistenciaRequest")
     @ResponsePayload
     public UpdateAsistenciaResponse updateAsistencia(@Valid @RequestPayload UpdateAsistenciaRequest request) throws ParseException{
 

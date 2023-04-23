@@ -41,7 +41,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
     
-    @Primary
+    //@Primary
     @Bean
     public XsdSchema asistenciaSchema() {
         return new SimpleXsdSchema(new ClassPathResource("asistencia-detalle.xsd"));
@@ -53,7 +53,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("AsistenciaPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolws");
+        wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolasistenciaws");
         wsdl11Definition.setSchema(asistenciaSchema);
         return wsdl11Definition;
     }

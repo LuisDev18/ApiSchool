@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
- targetNamespace="http://utp.edu.pe/schoolws"
- xmlns:tns="http://utp.edu.pe/schoolws" elementFormDefault="qualified">
+ targetNamespace="http://utp.edu.pe/schoolasistenciaws"
+ xmlns:tns="http://utp.edu.pe/schoolasistenciaws" elementFormDefault="qualified">
 
 	<!-- Obtener -->
 	<xs:element name="GetAsistenciaEstudianteRequest">
