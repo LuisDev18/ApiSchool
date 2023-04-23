@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://utp.edu.pe/schoolws"
+ xmlns:tns="http://utp.edu.pe/schoolws" elementFormDefault="qualified">
+
+	<!-- Obtener -->
+	<xs:element name="GetAsistenciaEstudianteRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idEstudiante" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetAsistenciaEstudianteResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AsistenciaDetalle" type="tns:AsistenciaDetalle" maxOccurs="unbounded"/>				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	      	
+ 	<!-- Agregar -->
+    <xs:element name="AddAsistenciaRequest">
+        <xs:complexType>
+            <xs:sequence>                
+                <xs:element name="idClase" type="xs:int" />
+                <xs:element name="idEstudiante" type="xs:int" />
+                <xs:element name="fechaAsistencia" type="xs:string" />
+                <xs:element name="observacion" type="xs:string"/>
+                <xs:element name="auxiliar" type="xs:string"/>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+	<xs:element name="AddAsistenciaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+				<xs:element name="AsistenciaDetalle" type="tns:AsistenciaDetalle"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>     
+
+ 	<!-- Actualizar -->
+    <xs:element name="UpdateAsistenciaRequest">
+        <xs:complexType>
+            <xs:sequence>                
+            	<xs:element name="idAsistencia" type="xs:int" />
+                <xs:element name="idClase" type="xs:int" />
+                <xs:element name="idEstudiante" type="xs:int" />
+                <xs:element name="fechaAsistencia" type="xs:string" />
+                <xs:element name="observacion" type="xs:string"/>
+                <xs:element name="auxiliar" type="xs:string"/>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+	<xs:element name="UpdateAsistenciaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+				<xs:element name="AsistenciaDetalle" type="tns:AsistenciaDetalle"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>     
+
+	<!-- Status -->
+    <xs:complexType name="ServiceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+	<!-- Eliminar -->
+	<xs:element name="DeleteAsistenciaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idAsistencia" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteAsistenciaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	    
+	<!-- Objetos -->   
+	<xs:complexType name="AsistenciaDetalle">
+    	<xs:sequence>
+        	<xs:element name="idAsistencia" type="xs:int" />
+        	<xs:element name="idClase" type="xs:int" />
+            <xs:element name="idEstudiante" type="xs:int" />
+            <xs:element name="fechaAsistencia" type="xs:string" />
+            <xs:element name="observacion" type="xs:string"/>
+			<xs:element name="auxiliar" type="xs:string"/>                
+        </xs:sequence>
+	</xs:complexType>
+       	
+</xs:schema>
