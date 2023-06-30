@@ -24,12 +24,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
-    
+
     //@Primary
     @Bean
     public XsdSchema articulosSchema() {
         return new SimpleXsdSchema(new ClassPathResource("profesor-detalle.xsd"));
     }
+
     //ws/profesor.wsdl
     @Bean(name = "profesor")
     public DefaultWsdl11Definition defaultWsdl11Definition2(XsdSchema articulosSchema) {
@@ -46,15 +47,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new SimpleXsdSchema(new ClassPathResource("asistencia-detalle.xsd"));
     }
     //ws/asistencia.wsdl
-    
+
     @Bean(name = "asistencia")
     public DefaultWsdl11Definition defaultWsdl11Definition3(XsdSchema asistenciaSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("AsistenciaPort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolasistenciaws");
-
-
+        wsdl11Definition.setSchema(asistenciaSchema);
+        return wsdl11Definition;
+    }
 
     @Bean
     public XsdSchema alumnosSchema() {
@@ -62,7 +64,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
     //ws/profesor.wsdl
     @Bean(name = "alumnos")
-    public DefaultWsdl11Definition defaultWsdl11Definition3(XsdSchema alumnosSchema) {
+    public DefaultWsdl11Definition defaultWsdl11Definition4(XsdSchema alumnosSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("AlumnosPort");
         wsdl11Definition.setLocationUri("/ws");
