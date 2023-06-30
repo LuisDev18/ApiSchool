@@ -27,18 +27,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     //@Primary
     @Bean
-    public XsdSchema articulosSchema() {
+    public XsdSchema profesorSchema() {
         return new SimpleXsdSchema(new ClassPathResource("profesor-detalle.xsd"));
     }
 
     //ws/profesor.wsdl
     @Bean(name = "profesor")
-    public DefaultWsdl11Definition defaultWsdl11Definition2(XsdSchema articulosSchema) {
+    public DefaultWsdl11Definition defaultWsdl11Definition2(XsdSchema profesorSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("ProfesorPort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolws");
-        wsdl11Definition.setSchema(articulosSchema);
+        wsdl11Definition.setSchema(profesorSchema);
         return wsdl11Definition;
     }
 
