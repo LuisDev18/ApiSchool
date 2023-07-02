@@ -4,7 +4,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
@@ -70,6 +69,22 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://utp.edu.pe/alumnows");
         wsdl11Definition.setSchema(alumnosSchema);
+
+        return wsdl11Definition;
+    }
+    
+    @Bean
+    public XsdSchema usuariosSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("usuario-detalle.xsd"));
+    }
+    //ws/usuario.wsdl
+    @Bean(name = "usuario")
+    public DefaultWsdl11Definition defaultWsdl11Definition5(XsdSchema usuariosSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("UsuariosPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://utp.edu.pe/schoolusuariows");
+        wsdl11Definition.setSchema(usuariosSchema);
 
         return wsdl11Definition;
     }

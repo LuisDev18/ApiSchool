@@ -63,7 +63,7 @@ public class AsistenciaEndPoint {
     
     @PayloadRoot(namespace = "http://utp.edu.pe/schoolasistenciaws", localPart = "DeleteAsistenciaRequest")
 	@ResponsePayload
-	public DeleteAsistenciaResponse create (@RequestPayload DeleteAsistenciaRequest request) {
+	public DeleteAsistenciaResponse delete (@RequestPayload DeleteAsistenciaRequest request) {
 		ServiceStatus serviceStatus=new ServiceStatus();
 		DeleteAsistenciaResponse response = new DeleteAsistenciaResponse();
 		boolean resp=asistenciaService.delete(request.getIdAsistencia());

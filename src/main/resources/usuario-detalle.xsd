@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://utp.edu.pe/schoolusuariows"
+	xmlns:tns="http://utp.edu.pe/schoolusuariows"
+	elementFormDefault="qualified">
+
+	<!-- Agregar Usuario -->
+	<xs:element name="AddUsuarioRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="email" type="xs:string" />
+				<xs:element name="password" type="xs:string" />
+				<xs:element name="rol" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AddUsuarioResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+				<xs:element name="UsuarioDetalle" type="tns:UsuarioDetalle"/>				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Login Usuario -->
+	<xs:element name="LoginUsuarioRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="email" type="xs:string" />
+				<xs:element name="password" type="xs:string" />								
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="LoginUsuarioResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>	
+				<xs:element name="UsuarioDetalleToken" type="tns:UsuarioDetalleToken"/>				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	      	
+ 	<!-- Obtener usuarios -->
+        <xs:element name="GetAllUsuarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="texto" type="xs:string"/>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetAllUsuarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="UsuarioDetalle" type="tns:UsuarioDetalle" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    	    
+ 	<!-- Actualizar Usuario -->
+    <xs:element name="UpdateUsuarioRequest">
+        <xs:complexType>
+            <xs:sequence>                
+            	<xs:element name="idUsuario" type="xs:int" />
+                <xs:element name="email" type="xs:string" />
+				<xs:element name="password" type="xs:string" />                                
+                <xs:element name="rol" type="xs:string" />                             
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+	<xs:element name="UpdateUsuarioResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+				<xs:element name="UsuarioDetalle" type="tns:UsuarioDetalle"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Eliminar Usuario-->
+	<xs:element name="DeleteUsuarioRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idUsuario" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteUsuarioResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	    
+	    	    
+	<!-- Objetos -->	
+	<!-- Status -->
+    <xs:complexType name="ServiceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+       
+	<!-- Usuario -->       
+	<xs:complexType name="UsuarioDetalle">
+    	<xs:sequence>
+        	<xs:element name="idUsuario" type="xs:int" />
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="rol" type="xs:string" />	                
+        </xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UsuarioDetalleToken">
+    	<xs:sequence>
+        	<xs:element name="UsuarioDetalle" type="tns:UsuarioDetalle"/>                
+			<xs:element name="token" type="xs:string" />
+        </xs:sequence>
+	</xs:complexType>
+       	
+</xs:schema>
